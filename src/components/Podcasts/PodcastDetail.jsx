@@ -92,6 +92,19 @@ export default function PodcastDetail({ podcast, genres }) {
                   Episode {index + 1}: {ep.title}
                 </p>
                 <p className={styles.episodeDesc}>{ep.description}</p>
+                <button
+                  className={styles.playButton}
+                  onClick={() =>
+                    play({
+                      src: ep.file || ep.fileUrl, // use the correct property from your API
+                      title: ep.title,
+                      show: podcast.title,
+                      episode: ep.id,
+                    })
+                  }
+                >
+                  Play
+                </button>
               </div>
             </div>
           ))}

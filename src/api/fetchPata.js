@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 /**
  * @function fetchPodcasts
  * Asynchronously fetches podcast data from the remote API and updates state accordingly.
@@ -36,4 +38,24 @@ export async function fetchSinglePodcast(id, setPodcast, setError, setLoading) {
   } finally {
     setLoading(false);
   }
+}
+
+/**
+ * Custom hook to fetch a single podcast by ID.
+ *
+ * @param {string} id - The ID of the podcast to fetch.
+ * @param {Function} setPodcast - State setter function to update the podcast data.
+ * @param {Function} setError - State setter function to update the error message (string).
+ * @param {Function} setLoading - State setter function to toggle the loading state (boolean).
+ */
+export function useFetchSinglePodcast(id, setPodcast, setError, setLoading) {
+  useEffect(() => {
+    fetchSinglePodcast(id, setPodcast, setError, setLoading);
+  }, [id, setPodcast, setError, setLoading]);
+
+  useEffect(() => {
+    if (!loading && !error) {
+      console.log("Podcast data:", podcast);
+    }
+  }, [podcast, loading, error]);
 }
