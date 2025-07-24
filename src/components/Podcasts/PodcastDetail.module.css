@@ -96,9 +96,9 @@ strong {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  /* align-items: center; */
   gap: 1rem;
   margin-bottom: 2rem;
+  color: #333333;
 }
 
 .left {
@@ -162,6 +162,7 @@ strong {
 
 .episodeTitle {
   font-weight: bold;
+  color: #333333;
   font-size: 0.95rem;
   margin-bottom: 0.25rem;
   margin-top: 0px;
@@ -223,7 +224,7 @@ strong {
 .favButton {
   padding: 5px 10px;
   margin-left: 10px;
-  background-color: #ff4444;
+  background-color: #f14545;
   color: white;
   border: none;
   cursor: pointer;
@@ -231,7 +232,7 @@ strong {
 }
 
 .favButton:hover {
-  background-color: #cc0000;
+  background-color: #ab4040;
 }
 
 
@@ -241,43 +242,48 @@ strong {
 }
 
 body.dark .container {
-  background-color: #2a2a2a;
-  color: #fff;
+  background-color: #2a2a2a !important;
+  color: #fff !important;
 }
 
 body.light .container {
-  background-color: #fff;
-  color: #333;
+  background-color: #fff !important;
+  color: #333 !important;
 }
 
-body.dark .favButton {
-  background-color: #ff6666;
-}
-
-body.light .favButton {
-  background-color: #ff4444;
-}
-
-.container {
-  padding: 20px;
+.backButton,
+.playButton,
+.favButton {
   transition: background-color 0.3s, color 0.3s;
 }
 
-body.dark .container {
-  background-color: #2a2a2a;
-  color: #fff;
+body.dark .backButton,
+body.dark .playButton,
+body.dark .favButton {
+  background-color: #4a90e2 !important;
+  color: #fff !important;
 }
 
-body.light .container {
-  background-color: #fff;
-  color: #333;
+body.light .backButton,
+body.light .playButton,
+body.light .favButton {
+  background-color: #1a73e8 !important;
+  color: #fff !important;
 }
-
 
 body.dark .favButton {
-  background-color: #ff6666;
+  background-color: #ff6666 !important;
 }
 
 body.light .favButton {
-  background-color: #ff4444;
+  background-color: #ff4444 !important;
+}
+
+.playButton {
+  padding: 10px 15px;
+  background-color: #07060c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }

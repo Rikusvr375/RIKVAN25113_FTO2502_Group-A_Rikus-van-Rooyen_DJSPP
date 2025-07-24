@@ -18,6 +18,10 @@ export function ThemeProvider({ children }) {
       body.classList.add(theme);
       localStorage.setItem("theme", theme);
       console.log("Body classes after update:", body.className);
+
+      // Inline style fallback
+      body.style.backgroundColor = theme === "dark" ? "#1a1a1a" : "#f5f5f5";
+      body.style.color = theme === "dark" ? "#fff" : "#333";
     } else {
       console.error("document.body is not available");
     }

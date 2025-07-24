@@ -7,3 +7,38 @@ body {
   margin: 0;
   background: #f9f9f9;
 }
+
+/* Reset and global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  transition: all 0.3s ease;
+}
+
+/* Highest priority theme styles */
+body.dark {
+  background-color: #1a1a1a !important;
+  color: #fff !important;
+}
+
+body.light {
+  background-color: #f5f5f5 !important;
+  color: #333 !important;
+}
+
+/* Ensure all components inherit */
+.container,
+.main,
+.playerBar,
+.appHeader,
+.carouselContainer,
+.showGroup,
+.episodeCard {
+  background-color: inherit !important;
+  color: inherit !important;
+  transition: all 0.3s ease !important;
+}
