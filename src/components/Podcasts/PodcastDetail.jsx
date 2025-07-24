@@ -1,45 +1,41 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // ← add this
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom"; 
 import styles from "./PodcastDetail.module.css";
-import { formatDate } from "../../utils/formatDate";
-import GenreTags from "../UI/GenreTags";
+import { AudioPlayerContext } from "../../context/AudioPlayerContext.jsx";
+import{ formatDate } from "../../utils/formatDate.js";
+import GenreTags from "../UI/GenreTags.jsx";
 
 export default function PodcastDetail({ podcast, genres }) {
   const [selectedSeasonIndex, setSelectedSeasonIndex] = useState(0);
   const season = podcast.seasons[selectedSeasonIndex];
-  const navigate = useNavigate(); // ← hook for navigation
+  const navigate = useNavigate();
+  const { play } = useContext(AudioPlayerContext); 
 
   return (
     <div className={styles.container}>
-      {/* Back Button */}
       <button className={styles.backButton} onClick={() => navigate(-1)}>
         ← Back
       </button>
 
-      {/* Header */}
       <div className={styles.header}>
         <img src={podcast.image} alt="Podcast Cover" className={styles.cover} />
         <div>
           <h1 className={styles.title}>{podcast.title}</h1>
           <p className={styles.description}>{podcast.description}</p>
-
           <div className={styles.metaInfo}>
             <div className={styles.seasonInfo}>
               <div>
                 <p>Genres</p>
                 <GenreTags genres={genres} />
               </div>
-
               <div>
                 <p>Last Updated:</p>
                 <strong>{formatDate(podcast.updated)}</strong>
               </div>
-
               <div>
                 <p>Total Seasons:</p>
                 <strong>{podcast.seasons.length} Seasons</strong>
               </div>
-
               <div>
                 <p>Total Episodes:</p>
                 <strong>
@@ -55,7 +51,6 @@ export default function PodcastDetail({ podcast, genres }) {
         </div>
       </div>
 
-      {/* Season Details */}
       <div className={styles.seasonDetails}>
         <div className={styles.seasonIntro}>
           <div className={styles.left}>
@@ -96,7 +91,7 @@ export default function PodcastDetail({ podcast, genres }) {
                   className={styles.playButton}
                   onClick={() =>
                     play({
-                      src: ep.file || ep.fileUrl, // use the correct property from your API
+                      src: ep.file || ep.fileUrl,
                       title: ep.title,
                       show: podcast.title,
                       episode: ep.id,

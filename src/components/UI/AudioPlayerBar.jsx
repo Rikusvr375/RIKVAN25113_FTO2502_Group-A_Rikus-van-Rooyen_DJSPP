@@ -3,9 +3,11 @@ import { AudioPlayerContext } from "../../context/AudioPlayerContext";
 import styles from "./AudioPlayerBar.module.css";
 
 export default function AudioPlayerBar() {
-  const { current, playing, play, pause, seek, progress, audioRef } = useContext(AudioPlayerContext);
+  const { current, playing, play, pause, seek, progress, audioRef, setPlaying } = useContext(AudioPlayerContext);
 
   if (!current) return null;
+
+  
 
   const handlePlayPause = () => {
     if (playing) {
@@ -16,9 +18,17 @@ export default function AudioPlayerBar() {
   };
 
   const handleSeek = (e) => {
-    const pct = e.target.value;
-    if (audioRef.current && audioRef.current.duration)
-      seek((pct / 100) * audioRef.current.duration);
+    const pct = parseFloat(e.target.value); 
+    if (audioRef.current && audioRef.current.duration && isFinite(audioRef.current.duration)) {
+      const time = (pct / 100) * audioRef.current.duration;
+      if (isFinite(time)) {
+        seek(time);
+      } else {
+        console.error("Invalid seek time calculated:", time);
+      }
+    } else {
+      console.error("Audio duration is not available or finite");
+    }
   };
 
   return (
@@ -34,7 +44,7 @@ export default function AudioPlayerBar() {
         type="range"
         min={0}
         max={100}
-        value={progress * 100}
+        value={isNaN(progress * 100) ? 0 : progress * 100}
         onChange={handleSeek}
       />
     </div>
