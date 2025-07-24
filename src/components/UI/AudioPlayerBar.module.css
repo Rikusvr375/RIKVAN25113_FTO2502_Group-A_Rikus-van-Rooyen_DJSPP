@@ -17,3 +17,20 @@
 input[type="range"] {
   width: 200px;
 }
+
+.playerBar {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark .playerBar {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+body.light .playerBar {
+  background-color: #f0f0f0;
+  color: #333;
+}

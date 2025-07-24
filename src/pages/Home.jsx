@@ -11,6 +11,7 @@ import styles from "./Home.module.css";
 import { genres } from "../data";
 import { PodcastContext } from "../context/PodcastContext";
 import { useContext } from "react";
+import RecommendedCarousel from "../components/RecommendedCarousel";
 
 /**
  * Home page of the Podcast Explorer app.
@@ -18,7 +19,7 @@ import { useContext } from "react";
  * - Displays the main podcast browsing interface.
  * - Includes search, genre filter, and sort controls.
  * - Shows a loading indicator or error message based on fetch state.
- * - Renders the podcast grid and pagination once data is loaded.
+ * - Renders the podcast grid, pagination, and recommended carousel.
  *
  * Context:
  * - Consumes `PodcastContext` to access podcast data, loading, and error states.
@@ -30,6 +31,7 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      <RecommendedCarousel />
       <section className={styles.controls}>
         <SearchBar />
         <GenreFilter genres={genres} />
@@ -37,9 +39,7 @@ export default function Home() {
       </section>
 
       {loading && <Loading message="Loading podcasts..." />}
-      {error && (
-        <Error message={`Error occurred while fetching podcasts: ${error}`} />
-      )}
+      {error && <Error message={`Error occurred while fetching podcasts: ${error}`} />}
 
       {!loading && !error && (
         <>

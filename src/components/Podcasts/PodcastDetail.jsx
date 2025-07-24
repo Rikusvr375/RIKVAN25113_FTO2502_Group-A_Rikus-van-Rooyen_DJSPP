@@ -1,15 +1,17 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom"; 
-import styles from "./PodcastDetail.module.css";
-import { AudioPlayerContext } from "../../context/AudioPlayerContext.jsx";
-import{ formatDate } from "../../utils/formatDate.js";
+import { useNavigate } from "react-router-dom";
+import { AudioPlayerContext } from "../../context/AudioPlayerContext.jsx"; 
+import { FavouritesContext } from "../../context/FavouritesContext.jsx";
+import { formatDate } from "../../utils/formatDate.js";
 import GenreTags from "../UI/GenreTags.jsx";
+import styles from "./PodcastDetail.module.css";
 
 export default function PodcastDetail({ podcast, genres }) {
   const [selectedSeasonIndex, setSelectedSeasonIndex] = useState(0);
   const season = podcast.seasons[selectedSeasonIndex];
   const navigate = useNavigate();
-  const { play } = useContext(AudioPlayerContext); 
+  const { play } = useContext(AudioPlayerContext);
+  const { toggleFavourite, isFavourite } = useContext(FavouritesContext);
 
   return (
     <div className={styles.container}>
@@ -39,11 +41,7 @@ export default function PodcastDetail({ podcast, genres }) {
               <div>
                 <p>Total Episodes:</p>
                 <strong>
-                  {podcast.seasons.reduce(
-                    (acc, s) => acc + s.episodes.length,
-                    0
-                  )}{" "}
-                  Episodes
+                  {podcast.seasons.reduce((acc, s) => acc + s.episodes.length, 0)} Episodes
                 </strong>
               </div>
             </div>
@@ -91,14 +89,34 @@ export default function PodcastDetail({ podcast, genres }) {
                   className={styles.playButton}
                   onClick={() =>
                     play({
-                      src: ep.file || ep.fileUrl,
+                      src: ep.file || ep.fileUrl || "",
                       title: ep.title,
                       show: podcast.title,
                       episode: ep.id,
+                      showId: podcast.id,
+                      seasonIndex: selectedSeasonIndex,
+                      episodeId: ep.id,
                     })
                   }
                 >
                   Play
+                </button>
+                <button
+                  className={styles.favButton}
+                  onClick={() =>
+                    toggleFavourite({
+                      title: ep.title,
+                      show: podcast.title,
+                      showId: podcast.id,
+                      seasonIndex: selectedSeasonIndex,
+                      episodeId: ep.id,
+                    })
+                  }
+                >
+                  {isFavourite({
+                    id: ep.id,
+                    showId: podcast.id,
+                  }) ? "❤️" : "🤍"}
                 </button>
               </div>
             </div>
