@@ -17,6 +17,7 @@ strong {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   margin-bottom: 2rem;
 }
+
 .backButton {
   background: none;
   border: none;
@@ -224,15 +225,14 @@ strong {
 .favButton {
   padding: 5px 10px;
   margin-left: 10px;
-  background-color: #f14545;
-  color: white;
+  color: rgb(200, 185, 185);
   border: none;
   cursor: pointer;
-  border-radius: 50%;
+  border-radius: 100%;
 }
 
 .favButton:hover {
-  background-color: #ab4040;
+  background-color: #de1717;
 }
 
 
@@ -280,7 +280,7 @@ body.light .favButton {
 }
 
 .playButton {
-  padding: 10px 15px;
+  padding: 6px 10px;
   background-color: #07060c;
   color: white;
   border: none;

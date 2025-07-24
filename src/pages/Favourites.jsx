@@ -23,6 +23,7 @@ export default function Favourites() {
 
   return (
     <div className={styles.container}>
+      <div className={styles.top}>
       <h1>Favourites</h1>
       <select
         className={styles.sortSelect}
@@ -35,6 +36,7 @@ export default function Favourites() {
           </option>
         ))}
       </select>
+        </div>
       {Object.entries(groupedFavourites).map(([showTitle, episodes]) => (
         <div key={showTitle} className={styles.showGroup}>
           <h2>{showTitle}</h2>
