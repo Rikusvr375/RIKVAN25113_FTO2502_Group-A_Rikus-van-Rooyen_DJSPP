@@ -25,3 +25,4 @@ export default function GenreTags({ genres }) {
   });
   return <div className={styles.tags}>{genreSpans}</div>;
 }
+

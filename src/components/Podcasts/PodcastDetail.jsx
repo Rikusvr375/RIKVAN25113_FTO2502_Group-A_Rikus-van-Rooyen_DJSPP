@@ -89,7 +89,7 @@ export default function PodcastDetail({ podcast, genres }) {
                   className={styles.playButton}
                   onClick={() =>
                     play({
-                      src: ep.file || ep.fileUrl || "",
+                      src: ep.file,
                       title: ep.title,
                       show: podcast.title,
                       episode: ep.id,

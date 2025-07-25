@@ -6,6 +6,7 @@ body {
   font-family: "Inter", sans-serif;
   margin: 0;
   background: #f9f9f9;
+  transition: all 0.3s ease;
 }
 
 /* Reset and global styles */
@@ -15,22 +16,8 @@ body {
   box-sizing: border-box;
 }
 
-body {
-  transition: all 0.3s ease;
-}
 
-/* Highest priority theme styles */
-body.dark {
-  background-color: #1a1a1a !important;
-  color: #fff !important;
-}
 
-body.light {
-  background-color: #f5f5f5 !important;
-  color: #333 !important;
-}
-
-/* Ensure all components inherit */
 .container,
 .main,
 .playerBar,

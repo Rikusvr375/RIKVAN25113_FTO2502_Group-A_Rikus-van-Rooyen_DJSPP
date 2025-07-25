@@ -12,8 +12,11 @@
   font-size: 1rem;
   border: none;
   cursor: pointer;
+  z-index: 1001;
+  margin-bottom: 60px;
 }
 .active {
   background-color: #2563eb;
   color: white;
 }
+

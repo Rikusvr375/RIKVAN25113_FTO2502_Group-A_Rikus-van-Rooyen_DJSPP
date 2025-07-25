@@ -60,12 +60,12 @@ strong {
   margin-bottom: 1rem;
 }
 
-.genreBadge {
+/* .genreBadge {
   background-color: #e5e7eb;
   padding: 0.3rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.85rem;
-}
+} */
 
 .metaInfo p {
   font-size: 0.875rem;
