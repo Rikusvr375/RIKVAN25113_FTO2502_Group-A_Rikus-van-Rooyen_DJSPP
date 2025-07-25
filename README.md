@@ -23,7 +23,7 @@ This project is ideal for learning React, state management with Context API, and
 
  Please see my App's live website link. Powered by Vercel
 
-[Live App Link](dynamic-podcast-app.vercel.app)
+[dynamic-podcast-app.vercel.app](Live App Link)
 
 ---
 
